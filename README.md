@@ -9,3 +9,5 @@ Things to develop:
  - The test case in powerapps for the five test cases that I have made.
  - Write on the user manual for the report
  - Finish the last few panels of the application.
+
+~ John Le, 15/05/2024
