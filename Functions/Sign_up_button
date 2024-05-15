@@ -1,0 +1,57 @@
+This is the code for the sign up button:
+
+
+Navigate(Registration_page, ScreenTransition.Fade)
+
+This code is to initiate the navigation to the sign up page. Once navigated:
+
+Patch(
+    'Username list',
+    Defaults('Username list'),
+    {
+        Usernames: Username_reg_input.Text,
+        Email: Email_input.Text,
+        Passwords: Password_reg_input.Text
+    }
+);
+If(
+    !IsBlank(
+        LookUp(
+            'Username list',
+            Username_reg_input.Text = Usernames && Email_input.Text = Email && Password_reg_input.Text = Passwords
+        )
+    ),
+    Navigate(Registration_completed),
+    Navigate(Registration_page)
+);
+If(
+    IsBlank(Password_reg_input.Text),
+    Notify(
+        "Password field is empty.",
+        NotificationType.Error
+    )
+);
+If(
+    IsBlank(Username_reg_input.Text),
+    Notify(
+        "Username field is empty.",
+        NotificationType.Error
+    )
+);
+If(
+    IsBlank(Email_input.Text),
+    Notify(
+        "Email field is empty.",
+        NotificationType.Error
+    )
+);
+If(
+    IsBlank(Password_reg_input.Text) || IsBlank(Username_reg_input.Text) || IsBlank(Email_input.Text),
+    Notify(
+        "One or more of the registration fields are empty.",
+        NotificationType.Error
+    )
+)
+
+
+This just means that if there is something typed up that is not blank, it will add this new data to the sharepoint database in each respective field.
